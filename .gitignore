@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Production builds
+dist/
+*/dist/
+dist-ssr/
+*/dist-ssr/
+
+# Raw camera footage (transcoded into /public/videos/*.mp4 and /public/artworks/*.jpg)
+*.MOV
+*.mov
+
+# Environment & logs
+.env*.local
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# System & IDE
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

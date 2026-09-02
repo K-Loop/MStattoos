@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-cinzel: 'Cinzel', serif;
+  --font-italiana: 'Italiana', serif;
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Syne', sans-serif;
+
+  --color-canvas-bg: #F7F6F2;
+  --color-canvas-secondary: #EFEDE7;
+  --color-text-primary: #111111;
+  --color-text-secondary: #555555;
+  --color-border-subtle: #D8D6D0;
+  --color-border-dark: #111111;
+}
+
+/* Typography Classes */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-serif-editorial {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-italiana {
+  font-family: 'Italiana', serif;
+}
+
+.font-sans-modern {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Custom Minimal Scrollbar matching reference image */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F6F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8D6D0;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #111111;
+}
+
+/* Selection */
+::selection {
+  background-color: #111111;
+  color: #F7F6F2;
+}
+
+/* Image Slot Placeholders */
+.image-slot {
+  background-color: #EFEDE7;
+  border: 1px solid #D8D6D0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
