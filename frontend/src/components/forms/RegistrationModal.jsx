@@ -111,16 +111,16 @@ export default function RegistrationModal({
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-sm">
         <motion.div
           initial={{ opacity: 0, scale: 0.97, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.97, y: 15 }}
           transition={{ duration: 0.25 }}
-          className="relative w-full max-w-2xl bg-[#F7F6F2] border border-[#D8D6D0] p-6 sm:p-10 shadow-2xl my-8 text-left"
+          className="relative w-full max-w-2xl max-h-[92vh] sm:max-h-[88vh] bg-[#F7F6F2] border border-[#D8D6D0] shadow-2xl flex flex-col overflow-hidden text-left"
         >
-          {/* MODAL HEADER: BackButton STRICTLY ON THE LEFT */}
-          <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#D8D6D0]">
+          {/* STICKY MODAL HEADER: BackButton STRICTLY ON THE LEFT */}
+          <div className="flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5 border-b border-[#D8D6D0] bg-[#F7F6F2] shrink-0 z-20">
             <BackButton
               onClick={onClose}
               label="Back"
@@ -136,12 +136,14 @@ export default function RegistrationModal({
             </div>
           </div>
 
-          {!successRecord ? (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <h3 className="font-cinzel text-2xl text-[#111111] tracking-wide mb-1">
-                  ENROLL AT MS ART ACADEMY
-                </h3>
+          {/* SCROLLABLE FORM BODY (Guaranteed in-bounds on any screen) */}
+          <div className="overflow-y-auto px-5 py-6 sm:px-8 sm:py-8 flex-1 overscroll-contain">
+            {!successRecord ? (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <h3 className="font-cinzel text-2xl text-[#111111] tracking-wide mb-1">
+                    ENROLL AT MS ART ACADEMY
+                  </h3>
                 <p className="text-xs text-[#71717a] font-light leading-relaxed">
                   Cohorts are intentionally capped at 4 to 8 students for maximum personalized instruction.
                 </p>
@@ -274,39 +276,39 @@ export default function RegistrationModal({
           ) : (
             /* SUCCESS STATE VIEW */
             <div className="text-center py-6 space-y-6">
-              <div className="w-16 h-16 rounded-full bg-[#f4f4f5] border border-[#0a0a0a] flex items-center justify-center mx-auto text-[#0a0a0a]">
+              <div className="w-16 h-16 rounded-full bg-[#EFEDE7] border border-[#111111] flex items-center justify-center mx-auto text-[#111111]">
                 <FiCheckCircle className="text-2xl" />
               </div>
 
               <div>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-[#71717a] font-mono block mb-1">
+                <span className="text-[10px] uppercase tracking-[0.25em] text-[#777777] font-mono block mb-1">
                   Registration Confirmed
                 </span>
-                <h3 className="font-cinzel text-2xl text-[#0a0a0a] tracking-wide">
+                <h3 className="font-cinzel text-2xl text-[#111111] tracking-wide">
                   APPLICATION RECEIVED
                 </h3>
-                <p className="text-xs sm:text-sm text-[#52525b] font-light max-w-md mx-auto mt-2 leading-relaxed">
-                  Thank you, <span className="font-medium text-[#0a0a0a]">{successRecord.applicantName}</span>. Your application for <span className="font-medium text-[#0a0a0a]">{successRecord.courseName}</span> has been securely lodged in the studio system.
+                <p className="text-xs sm:text-sm text-[#555555] font-light max-w-md mx-auto mt-2 leading-relaxed">
+                  Thank you, <span className="font-medium text-[#111111]">{successRecord.applicantName}</span>. Your application for <span className="font-medium text-[#111111]">{successRecord.courseName}</span> has been securely lodged in the studio system.
                 </p>
               </div>
 
               {/* Application Tracking Badge */}
-              <div className="p-4 bg-[#fafafa] border border-[#e4e4e7] max-w-sm mx-auto flex items-center justify-between">
+              <div className="p-4 bg-[#EFEDE7] border border-[#D8D6D0] max-w-sm mx-auto flex items-center justify-between">
                 <div className="text-left">
-                  <span className="text-[10px] uppercase font-mono text-[#71717a] block">Application ID</span>
-                  <span className="font-mono text-sm font-semibold text-[#0a0a0a]">{successRecord.id}</span>
+                  <span className="text-[10px] uppercase font-mono text-[#777777] block">Application ID</span>
+                  <span className="font-mono text-sm font-semibold text-[#111111]">{successRecord.id}</span>
                 </div>
                 <button
                   type="button"
                   onClick={handleCopyId}
-                  className="px-2.5 py-1 text-[11px] border border-[#e4e4e7] hover:border-[#0a0a0a] font-mono flex items-center gap-1.5 transition-colors"
+                  className="px-2.5 py-1 text-[11px] border border-[#D8D6D0] hover:border-[#111111] bg-[#F7F6F2] font-mono flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <FiCopy className="text-xs" />
                   <span>{copied ? 'Copied!' : 'Copy'}</span>
                 </button>
               </div>
 
-              <div className="text-xs text-[#71717a] font-mono">
+              <div className="text-xs text-[#777777] font-mono">
                 Our lead instructor will contact you via WhatsApp/Call within 24 hours.
               </div>
 
@@ -317,6 +319,7 @@ export default function RegistrationModal({
               </div>
             </div>
           )}
+          </div>
         </motion.div>
       </div>
     </AnimatePresence>

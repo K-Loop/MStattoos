@@ -63,14 +63,14 @@ export default function LightboxModal({
           <div className="flex items-center gap-3">
             <button
               onClick={() => setIsZoomed(!isZoomed)}
-              className="w-9 h-9 flex items-center justify-center text-[#52525b] hover:text-[#0a0a0a] border border-[#e4e4e7] hover:border-[#0a0a0a] transition-colors"
+              className="w-9 h-9 flex items-center justify-center text-[#111111] hover:text-[#111111] border border-[#D8D6D0] hover:border-[#111111] bg-[#EFEDE7] transition-colors cursor-pointer"
               title="Toggle Zoom"
             >
               {isZoomed ? <FiZoomOut className="text-sm" /> : <FiZoomIn className="text-sm" />}
             </button>
             <button
               onClick={onClose}
-              className="w-9 h-9 flex items-center justify-center text-[#52525b] hover:text-[#0a0a0a] border border-[#e4e4e7] hover:border-[#0a0a0a] transition-colors"
+              className="w-9 h-9 flex items-center justify-center text-[#111111] hover:text-[#111111] border border-[#D8D6D0] hover:border-[#111111] bg-[#EFEDE7] transition-colors cursor-pointer"
               title="Close (Esc)"
             >
               <FiX className="text-base" />
@@ -82,7 +82,7 @@ export default function LightboxModal({
         {hasNext && (
           <button
             onClick={() => onNavigate((currentIndex - 1 + artworks.length) % artworks.length)}
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 bg-white border border-[#e4e4e7] hover:border-[#0a0a0a] text-[#0a0a0a] flex items-center justify-center transition-all shadow-md focus:outline-none"
+            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 bg-[#EFEDE7] border border-[#D8D6D0] hover:border-[#111111] text-[#111111] flex items-center justify-center transition-all shadow-md focus:outline-none cursor-pointer"
             aria-label="Previous artwork"
           >
             <FiChevronLeft className="text-lg" />
@@ -93,7 +93,7 @@ export default function LightboxModal({
         {hasNext && (
           <button
             onClick={() => onNavigate((currentIndex + 1) % artworks.length)}
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 bg-white border border-[#e4e4e7] hover:border-[#0a0a0a] text-[#0a0a0a] flex items-center justify-center transition-all shadow-md focus:outline-none"
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 bg-[#EFEDE7] border border-[#D8D6D0] hover:border-[#111111] text-[#111111] flex items-center justify-center transition-all shadow-md focus:outline-none cursor-pointer"
             aria-label="Next artwork"
           >
             <FiChevronRight className="text-lg" />
@@ -101,14 +101,14 @@ export default function LightboxModal({
         )}
 
         {/* Main Artwork & Details Presentation */}
-        <div className="w-full max-w-6xl pt-20 pb-8 flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-12 z-20 overflow-y-auto max-h-[90vh]">
+        <div className="w-full max-w-6xl mt-16 mb-4 flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-10 z-20 overflow-y-auto max-h-[calc(100vh-90px)] px-4 py-2 overscroll-contain">
           {/* Visual Showcase */}
-          <div className="relative max-h-[60vh] md:max-h-[70vh] flex items-center justify-center">
+          <div className="relative max-h-[50vh] sm:max-h-[60vh] lg:max-h-[70vh] flex items-center justify-center shrink-0">
             {currentArtwork.image ? (
               <img
                 src={currentArtwork.image}
                 alt={currentArtwork.title}
-                className={`max-h-[55vh] md:max-h-[68vh] w-auto object-contain border border-[#e4e4e7] shadow-xl transition-transform duration-300 ${
+                className={`max-h-[48vh] sm:max-h-[58vh] lg:max-h-[68vh] w-auto max-w-[85vw] lg:max-w-none object-contain border border-[#D8D6D0] shadow-xl transition-transform duration-300 ${
                   isZoomed ? 'scale-125 cursor-zoom-out' : 'cursor-zoom-in'
                 }`}
                 onClick={() => setIsZoomed(!isZoomed)}
